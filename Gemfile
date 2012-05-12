@@ -31,6 +31,12 @@ group :development do
   gem "haml-rails", ">= 0.3.4"
 end
 
+group :beacon do
+  gem 'redis'
+  gem 'hiredis'
+  gem 'goliath'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

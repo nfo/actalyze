@@ -29,6 +29,8 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    async-rack (0.5.1)
+      rack (~> 1.1)
     builder (3.0.0)
     chunky_png (1.2.5)
     coffee-rails (3.2.2)
@@ -43,18 +45,36 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    crack (0.1.8)
+    em-synchrony (1.0.1)
+      eventmachine (>= 1.0.0.beta.1)
     erubis (2.7.0)
+    eventmachine (1.0.0.beta.4)
     execjs (1.3.2)
       multi_json (~> 1.0)
     fssm (0.2.9)
-    haml (3.1.4)
+    goliath (0.9.4)
+      async-rack
+      em-synchrony (>= 1.0.0)
+      eventmachine (>= 1.0.0.beta.3)
+      http_parser.rb
+      http_router (~> 0.9.0)
+      log4r
+      multi_json
+      rack (>= 1.2.2)
+      rack-contrib
+      rack-respond_to
+    haml (3.1.5)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
     hike (1.2.1)
+    hiredis (0.4.5)
+    http_parser.rb (0.5.3)
+    http_router (0.9.7)
+      rack (>= 1.0.0)
+      url_mount (~> 0.2.1)
     i18n (0.6.0)
     journey (1.0.3)
     jquery-rails (2.0.2)
@@ -67,6 +87,7 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.2.0)
     libv8 (3.3.10.4)
+    log4r (1.1.10)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -74,14 +95,17 @@ GEM
     mime-types (1.18)
     multi_json (1.3.5)
     polyglot (0.3.3)
-    pusher (0.8.2)
-      crack (~> 0.1.0)
+    pusher (0.9.3)
       multi_json (~> 1.0)
-      ruby-hmac (~> 0.4.0)
       signature (~> 0.1.2)
     rack (1.4.1)
+    rack-accept-media-types (0.9)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
+    rack-respond_to (0.9.8)
+      rack-accept-media-types (>= 0.6)
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.1)
@@ -105,14 +129,12 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redis (2.2.2)
-    ruby-hmac (0.4.0)
     sass (3.1.18)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    signature (0.1.2)
-      ruby-hmac
+    signature (0.1.3)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -134,6 +156,8 @@ GEM
     uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    url_mount (0.2.1)
+      rack
 
 PLATFORMS
   ruby
@@ -141,8 +165,10 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass (= 0.12.alpha.4)
+  goliath
   haml (>= 3.1.4)
   haml-rails (>= 0.3.4)
+  hiredis
   jquery-rails
   pusher
   rails (= 3.2.3)

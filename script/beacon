@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'digest/sha1'
+require 'json'
+
+require 'bundler'
+Bundler.setup(:beacon)
+
+require 'goliath'
+require 'redis'
+require 'hiredis'
+require 'redis/connection/synchrony'
+
+RESPONSE_204 = [204, {}, nil]
+REDIS_POOL_SIZE = 10
+# The connection pool does not work with EVAL
+# REDIS_POOL = EventMachine::Synchrony::ConnectionPool.new(size: REDIS_POOL_SIZE) do
+#   ::Redis.new(namespace: 'actalyze')
+# end
+REDIS_POOL = ::Redis.new(namespace: 'actalyze')
+
+REDIS_SCRIPT = File.read(File.join(File.expand_path(File.dirname(__FILE__)), 'load_time_range.lua'))
+REDIS_SCRIPT_SHA1 = Digest::SHA1.hexdigest(REDIS_SCRIPT)
+
+class Beacon < Goliath::API
+  use Goliath::Rack::Params
+
+  def response(env)
+    uuid = params[:uuid]
+    total_load_time = params[:total_load_time]
+
+    # REDIS_POOL.script :flush
+    res = REDIS_POOL.eval REDIS_SCRIPT, 1, uuid, 'f' + total_load_time
+    puts res.inspect
+
+    # [200, {}, res.inspect + "\n"]
+    RESPONSE_204
+  end
+end
