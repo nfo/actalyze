@@ -29,8 +29,10 @@ class Beacon < Goliath::API
     uuid = params[:uuid]
     total_load_time = params[:total_load_time]
 
+    converted = params[:pathname] == '/registered' ? 1 : 0
+
     # REDIS_POOL.script :flush
-    res = REDIS_POOL.eval REDIS_SCRIPT, 1, uuid, total_load_time
+    res = REDIS_POOL.eval REDIS_SCRIPT, 1, uuid, total_load_time, converted
     puts res.inspect
 
     # [200, {}, res.inspect + "\n"]

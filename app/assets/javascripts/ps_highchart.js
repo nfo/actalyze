@@ -7,7 +7,7 @@ Pusher.log = function(message) {
 WEB_SOCKET_DEBUG = true;
 
 var pusher = new Pusher('c65375e6d64ae2e5ba40');
-var channel = pusher.subscribe('load_time_range_channel');
+var channel = pusher.subscribe('conversion_load_time_range_channel');
 channel.bind('range_load_time_event', function(data) {
   var data = data["message"];
   chart.series[0].setData(data, false);
