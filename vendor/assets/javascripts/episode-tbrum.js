@@ -285,7 +285,11 @@ TBRUM.sendBeacon = function(url, params) {
 		}
 
 		img = new Image();
-		img.src = url + sTimes + "&v=" + TBRUM.version;
+		url += sTimes + "&v=" + TBRUM.version;
+		url += "&referrer=" + escape(document.refferer);
+		url += "&uuid=" + escape(TBRUM.getCookie("uuid"));
+		url += "&pathname=" + escape(window.location.pathname);
+		img.src = url;
 		return img.src;
 	}
 
