@@ -1,0 +1,111 @@
+div {
+  &.dataTables_length {
+    label {
+      float: left;
+      text-align: left;
+    }
+    select {
+      width: 75px;
+    }
+  }
+  &.dataTables_filter label {
+    float: right;
+  }
+  &.dataTables_info {
+    padding-top: 8px;
+  }
+  &.dataTables_paginate {
+    background: white;
+    float: right;
+    margin: 0;
+  }
+}
+
+table {
+  &.table {
+    clear: both;
+    margin-bottom: 6px !important;
+    background: white;
+    thead {
+      .sorting, .sorting_asc, .sorting_desc, .sorting_asc_disabled, .sorting_desc_disabled {
+        cursor: pointer;
+        *cursor: hand;
+      }
+      .sorting {
+        background: image-url('sort_both.png') no-repeat center right;
+      }
+      .sorting_asc {
+        background: image-url('sort_asc.png') no-repeat center right;
+      }
+      .sorting_desc {
+        background: image-url('sort_desc.png') no-repeat center right;
+      }
+      .sorting_asc_disabled {
+        background: image-url('sort_asc_disabled.png') no-repeat center right;
+      }
+      .sorting_desc_disabled {
+        background: image-url('sort_desc_disabled.png') no-repeat center right;
+      }
+    }
+  }
+  &.dataTable th:active {
+    outline: none;
+  }
+  input, textarea, select, .uneditable-input {
+    margin-bottom: 0;
+  }
+  .icon {
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+  a.action-button {
+    width: 20px;
+    height: 13px;
+    display: inline-block;
+  }
+  td.actions {
+    text-align: center;
+    .icon {
+      &.edit-icon {
+        background: image-url('light-icons/edit.png');
+      }
+      &.use-icon {
+        background: image-url('light-icons/incoming.png');
+      }
+      &.details-icon {
+        background: image-url('light-icons/search.png');
+      }
+      &.create_process-icon {
+        background: image-url('light-icons/save.png');
+      }
+      &.replay-icon {
+        background: image-url('light-icons/refresh-1.png');
+      }
+    }
+  }
+  td.description {
+    @include text-overflow();
+    max-width: 100px;
+  }
+  tbody tr:hover td.actions {
+    .icon {
+      &.edit-icon {
+        background: image-url('dark-icons/edit.png');
+      }
+      &.use-icon {
+        background: image-url('dark-icons/incoming.png');
+      }
+      &.details-icon {
+        background: image-url('dark-icons/search.png');
+      }
+      &.create_process-icon {
+        background: image-url('dark-icons/save.png');
+      }
+      &.replay-icon {
+        background: image-url('dark-icons/refresh-1.png');
+      }
+    }
+  }
+}

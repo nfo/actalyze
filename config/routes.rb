@@ -1,6 +1,11 @@
 Actalyze::Application.routes.draw do
   root to: 'pages#index'
 
+  get 'user' => 'pages#user'
+
+  get 'dashboard' => 'pages#dashboard', as: :dashboard
+  get 'chart' => 'pages#chart', as: :chart
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

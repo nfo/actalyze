@@ -1,0 +1,57 @@
+.widget {
+  background: #f9f9f9;
+  border: 1px solid #cdcdcd;
+  margin-top: 15px;
+  clear: both;
+  @include border-radius(3px);
+  @include box-shadow(0 1px 0 #fff);
+  .title {
+    height: 36px;
+    @include background(#efefef image-url('titleBg.png') repeat-x);
+    border-bottom: 1px solid #cdcdcd;
+    .titleIcon {
+      float: left;
+      padding: 11px 11px;
+      border-right: 1px solid #D5D5D5;
+    }
+    &:first-child {
+      @include border-radius(3px 3px 0 0);
+    }
+    h6 {
+      float: left;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 9px 12px 8px 12px;
+    }
+  }
+  .content {
+    padding: 14px;
+  }
+  .body {
+    padding: 12px 14px;
+  }
+  > p {
+    padding: 12px;
+  }
+  .num a {
+    @include border-radius(2px);
+  }
+  .wInvoice > ul {
+    margin: 0;
+    padding-bottom: 15px;
+    li {
+      width: 32%;
+      display: inline-block;
+      text-align: center;
+      border-left: 1px dotted #d5d5d5;
+      margin-top: 14px;
+      padding-top: 2px;
+      &:first-child {
+        border-left: none;
+      }
+      span {
+        font-size: 11px;
+      }
+    }
+  }
+}

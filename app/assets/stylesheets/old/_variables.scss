@@ -1,0 +1,47 @@
+// Fonts
+$baseFontFamily: "Helvetica", Arial, Verdana, sans-serif;
+$font-family: "Helvetica", Arial, Verdana, sans-serif;
+
+// Colors
+$dark-gray: #2F3940;
+$gray: #68747C;
+
+$main: #4A5B65;
+$main-text: #5A6B75;
+$second: #7B878F;
+$third: #8B979F;
+
+$blue: #419BB4;
+$green: #6EAC03;
+$violet: #5C7894;
+$orange: #EF9D11;
+
+$link: $blue;
+$linkColor: $blue;
+$link-hover: $orange;
+$link-active: $main;
+
+$main-gradient-top: #4B5B66;
+$main-gradient-bottom: #232B31;
+
+$second-gradient-top: #5C7894;
+$second-gradient-bottom: #455564;
+
+
+$orange-gradient-top: #FBBE00;
+$orange-gradient-bottom: #E47C23;
+
+$blue-gradient-top: #3489A4;
+$blue-gradient-bottom: #2D768C;
+
+$green-gradient-top: #6EAC03;
+$green-gradient-bottom: #568602;
+
+
+// Header
+$header-height: 60px;
+$navbarBackground:                #232B31;  // Override bootstrap value
+$navbarBackgroundHighlight:       #3A4853;  // Override bootstrap value
+
+// Well
+$well-padding: 19px;

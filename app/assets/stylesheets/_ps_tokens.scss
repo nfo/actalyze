@@ -1,0 +1,26 @@
+.token-container {
+  .token-container-value {
+    margin: 0;
+  }
+  input, button {
+    margin-bottom: 3px;
+  }
+
+  margin-bottom: 5px;
+}
+
+.token-generate {
+  margin-bottom: 2em;
+}
+
+.token-container-copy i {
+  background-image: image-url('copy.png');
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.token-container-date {
+  margin-left: 0.5em;
+}

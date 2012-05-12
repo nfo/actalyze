@@ -1,0 +1,4 @@
+.container
+  .row.show-grid
+    - ['acquisition', 'bounce_rate', 'visitor_engagement', 'conversion', 'user_engagement', 'retention', 'costs', 'revenues', 'page_view', 'users', 'life_time_value', 'performance'].each_with_index do |measure, index|
+      .span3{style: "margin-top: 15px;"}= t('.'+measure)

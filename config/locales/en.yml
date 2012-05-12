@@ -3,3 +3,16 @@
 
 en:
   hello: "Hello world"
+  dashboard:
+    acquisition: "Acquisition"
+    bounce_rate: "Bounce rate"
+    visitor_engagement: "Visitor engagement"
+    conversion: "Conversion"
+    user_engagement: "User engagement"
+    retention: "Retention"
+    costs: "Costs"
+    revenues: "Revenues"
+    page_view: "Page view"
+    users: "Users"
+    life_time_value: "Life Time Value"
+    performance: "Performance"

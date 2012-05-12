@@ -1,0 +1,141 @@
+a.reset {
+  color: #333;
+  &:hover {
+    text-decoration: none;
+    color: #111;
+  }
+}
+
+.float-right { float: right; }
+.float-left { float: left; }
+
+.horiz15 {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+.vert15 {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+
+.bottom0 { margin-bottom: 0 !important; }
+.bottom10 { margin-bottom: 10px !important; }
+.bottom15 { margin-bottom: 15px !important; }
+.bottom30 { margin-bottom: 30px !important; }
+.top0 { margin-top: 0 !important; }
+.top5 { margin-top: 5px !important; }
+.top10 { margin-top: 10px !important; }
+.top15 { margin-top: 15px !important; }
+.top30 { margin-top: 30px !important; }
+.left0 { margin-left: 0 !important; }
+.left5 { margin-left: 5px !important; }
+.left15 { margin-left: 15px !important; }
+.left30 { margin-left: 30px !important; }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right !important; }
+
+.hidden { display: none; }
+.inline-block { display: inline-block; }
+.inline { display: inline !important; }
+.block { display: block !important; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  color: $main-text;
+  @include background(image-url("background.png"));
+}
+
+h1 {
+  font-weight: normal;
+}
+
+#content{
+  h1{
+    text-align: center;
+    margin-top: 42px;
+    font-size: 48px;
+    font-family: 'EurostileRegular';
+    color: $main;
+  }
+  p{
+    margin-top: 30px;
+    &.welcome{
+      margin-top: 30px;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+  a.btn-home {
+    color: $second;
+    &.btn-info{
+      color: white;
+    }
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 8px 0;
+    width: 210px;
+  }
+}
+
+@mixin wellColumns($columnSpan: 1, $multipleSelectFix: 0) {
+  width: (($gridColumnWidth) * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1)) - 16 - (2 * $well-padding) + $multipleSelectFix;
+}
+
+.well {
+  background-color: #DCE5ED;
+  padding: $well-padding;
+  .span1     { @include wellColumns(1); }
+  .span2     { @include wellColumns(2); }
+  .span3     { @include wellColumns(3); }
+  .span4     { @include wellColumns(4); }
+  .span5     { @include wellColumns(5); }
+  .span6     { @include wellColumns(6); }
+  .span7     { @include wellColumns(7); }
+  .span8     { @include wellColumns(8); }
+  .span9     { @include wellColumns(9); }
+  .span10    { @include wellColumns(10); }
+  .span11    { @include wellColumns(11); }
+  .span12    { @include wellColumns(12); }
+
+  // Add 10 to the width of multiple selects to align with other inputs
+  select {
+    &.span1     { @include wellColumns(1, 10); }
+    &.span2     { @include wellColumns(2, 10); }
+    &.span3     { @include wellColumns(3, 10); }
+    &.span4     { @include wellColumns(4, 10); }
+    &.span5     { @include wellColumns(5, 10); }
+    &.span6     { @include wellColumns(6, 10); }
+    &.span7     { @include wellColumns(7, 10); }
+    &.span8     { @include wellColumns(8, 10); }
+    &.span9     { @include wellColumns(9, 10); }
+    &.span10    { @include wellColumns(10, 10); }
+    &.span11    { @include wellColumns(11, 10); }
+    &.span12    { @include wellColumns(12, 10); }
+  }
+}
+
+.show-grid {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.show-grid [class*="span"] {
+  background-color: #eee;
+  text-align: center;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  min-height: 30px;
+  line-height: 30px;
+}
+.show-grid:hover [class*="span"] {
+  background: #ddd;
+}
+.show-grid .show-grid {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.show-grid .show-grid [class*="span"] {
+  background-color: #ccc;
+}

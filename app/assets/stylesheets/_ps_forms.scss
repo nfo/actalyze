@@ -1,0 +1,89 @@
+form:last-child {
+  margin: 0;
+}
+
+.tab-header {
+  float: left;
+  margin: 5px 30px 5px 5px;
+  color: #419BB4;
+  cursor: pointer;
+}
+
+.tab-header-selected {
+  color: black;
+  border: none;
+  cursor: inherit;
+}
+
+.tab-panel {
+  @extend .well;
+  @extend .top15;
+  clear: both;
+}
+
+#action-select {
+  clear: both;
+}
+
+.centered-form input[type=email],
+.centered-form input[type=password],
+.centered-form input[type=text] {
+  width: 250px;
+}
+
+.profile-edit-form input[type=email],
+.profile-edit-form input[type=password],
+.profile-edit-form input[type=text] {
+  width: 730px;
+}
+
+.label-help-container {
+  label {
+    float: left;
+  }
+  .label-help {
+    float: right;
+    font-size: 11px;
+    color: #68747C;
+    margin-right: 10px;
+  }
+  .controls {
+    clear: both;
+  }
+}
+
+textarea {
+  height: 60px;
+}
+
+select[multiple] {
+  height: 90px;
+}
+
+.cs-list ul {
+  list-style: none;
+  margin: 0;
+}
+
+.cs-list li div {
+  float: left;
+}
+
+.cs-list li select {
+  margin-right: 1em;
+}
+
+#loader {
+  width: 32px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.control-group.error > label {
+  color: #333;
+}
+
+.help-block {
+  margin-top: -2px;
+  margin-bottom: 15px;
+}

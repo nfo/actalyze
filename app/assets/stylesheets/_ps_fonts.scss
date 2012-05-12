@@ -1,0 +1,16 @@
+// Custom fonts
+@font-face {
+   font-family: 'EurostileRegular';
+   src: url(font-path('EurostileRegular.eot'));
+   src: url(font-path('EurostileRegular.eot') + '?#iefix') format('embedded-opentype'),
+        url(font-path('EurostileRegular.woff')) format('woff'),
+          url(font-path('EurostileRegular.ttf')) format('truetype');
+}
+
+@font-face {
+   font-family: 'EurostileBold';
+   src: url(font-path('EurostileBold.eot'));
+   src: url(font-path('EurostileBold.eot') + '?#iefix') format('embedded-opentype'),
+        url(font-path('EurostileBold.woff')) format('woff'),
+          url(font-path('EurostileBold.ttf')) format('truetype');
+}

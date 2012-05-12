@@ -1,0 +1,18 @@
+.nav-list {
+  padding-left: 6px;
+  > li > a {
+    padding: 0 15px;
+  }
+  .active > a, .active > a:hover {
+    @include background-image(linear-gradient(top, color-stops(#5C7894, #455564)));
+  }
+}
+
+.navbar {
+  .container {
+    width: 940px;
+  }
+  .nav > li > a {
+    line-height: 20px;
+  }
+}
