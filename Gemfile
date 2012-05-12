@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 
 gem "haml", ">= 3.1.4"
+gem 'pusher'
+gem 'redis'
 
 
 # Gems used only for assets and not required

@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require highcharts
-//= require ps_highchart
 //= require bootstrap
+//= require pusher
+//= require ps_highchart

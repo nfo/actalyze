@@ -5,6 +5,7 @@ Actalyze::Application.routes.draw do
 
   get 'dashboard' => 'pages#dashboard', as: :dashboard
   get 'chart' => 'pages#chart', as: :chart
+  get 'pusher' => 'pages#pusher'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,3 +1,20 @@
+// Enable pusher logging - don't include this in production
+Pusher.log = function(message) {
+  if (window.console && window.console.log) window.console.log(message);
+};
+
+// Flash fallback logging - don't include this in production
+WEB_SOCKET_DEBUG = true;
+
+var pusher = new Pusher('c65375e6d64ae2e5ba40');
+var channel = pusher.subscribe('load_time_range_channel');
+channel.bind('range_load_time_event', function(data) {
+  var data = JSON.parse(data["message"]);
+  chart.series[0].setData(data.conversion, false);
+  chart.series[1].setData(data.users, false);
+  chart.redraw(true);
+});
+
 var chart;
 $(document).ready(function() {
   chart = new Highcharts.Chart({
@@ -11,9 +28,6 @@ $(document).ready(function() {
     credits: {
       enabled: false
     },
-    xAxis: [{
-      categories: ['< 1s', '1s - 2s', '2s - 3s', '3s - 4s', '> 5s']
-    }],
     yAxis: [{ // Primary yAxis
       labels: {
         style: {
@@ -46,17 +60,17 @@ $(document).ready(function() {
       }
     },
     series: [{
-      name: 'Rainfall',
+      name: 'Conversion',
       color: '#4572A7',
       type: 'column',
       yAxis: 1,
-      data: [144.0, 129.2, 106.4, 71.5, 49.9]
+      data: []
 
     }, {
-      name: 'Temperature',
+      name: 'Users',
       color: '#89A54E',
       type: 'spline',
-      data: [18.2, 14.5, 9.5, 7.0, 6.9]
+      data: []
     }]
   });
 });
