@@ -30,13 +30,14 @@ else
     redis.call('hincrby', load_time_range_hash, new_range, 1)
   end
 
-  -- Get the full hash of ranged load times (as an array)
-  local value = redis.call('hgetall', load_time_range_hash)
-
-  -- Transform the array to a string (Lua can't do it by itself, lulz)
-  local message = '['
-  for i,v in ipairs(value) do message = message .. v .. ',' end
-  message = string.sub(message, 0, -2) .. ']'
-
-  return redis.call('publish', 'load_time_range_channel', message)
 end
+
+-- Get the full hash of ranged load times (as an array)
+local value = redis.call('hgetall', load_time_range_hash)
+
+-- Transform the array to a string (Lua can't do it by itself, lulz)
+local message = '['
+for i,v in ipairs(value) do message = message .. v .. ',' end
+message = string.sub(message, 0, -2) .. ']'
+
+return redis.call('publish', 'load_time_range_channel', message)
