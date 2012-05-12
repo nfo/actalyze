@@ -26,7 +26,7 @@ TBRUM.version = "0.2";
 TBRUM.perf_obj = false;
 
 // CUSTOMIZE THESE VARIABLES!!
-TBRUM.beaconUrl = TBRUM.beaconUrl || '//localhost:3000/assets/beacon.gif';
+TBRUM.beaconUrl = TBRUM.beaconUrl || '//162.38.111.162:9000';
 TBRUM.autorun = ("undefined" != typeof(TBRUM.autorun) ? TBRUM.autorun : true);
 
 
