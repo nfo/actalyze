@@ -30,7 +30,7 @@ class Beacon < Goliath::API
     total_load_time = params[:total_load_time]
 
     # REDIS_POOL.script :flush
-    res = REDIS_POOL.eval REDIS_SCRIPT, 1, uuid, 'f' + total_load_time
+    res = REDIS_POOL.eval REDIS_SCRIPT, 1, uuid, total_load_time
     puts res.inspect
 
     # [200, {}, res.inspect + "\n"]

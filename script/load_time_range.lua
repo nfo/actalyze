@@ -1,5 +1,5 @@
 local uuid = KEYS[1]
-local load_time = tonumber(string.sub(ARGV[1], 2, -1)) -- 'f0.1' => 0.1
+local load_time = tonumber(ARGV[1]) / 1000.0
 
 local load_time_uuid_hash = 'load_time_' .. uuid
 local load_time_range_hash = 'load_time_range'
