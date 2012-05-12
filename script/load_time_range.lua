@@ -73,4 +73,4 @@ else
 end
 message = message .. ']'
 
-return redis.call('publish', 'conversion_conversion_load_time_range_channel', message)
+return redis.call('publish', 'conversion_load_time_range_channel', message)

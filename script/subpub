@@ -13,9 +13,12 @@ REDIS.subscribe('conversion_load_time_range_channel') do |on|
 
   on.message do |channel, message|
     puts "Message: #{channel} #{message}"
-    data = []
-    JSON.parse(message).each_slice(2) { |x, y| data << [x, y] }
-    Pusher[channel].trigger('range_load_time_event', {:message => data}.to_json)
+    message = JSON.parse(message)
+    total = []
+    converted = []
+    message[0].each_slice(2) { |x, y| total << [x, y] }
+    message[1].each_slice(2) { |x, y| converted << [x, y] }
+    Pusher[channel].trigger('range_load_time_event', {:message => [total, converted]}.to_json)
   end
 
   on.unsubscribe do |channel, subscriptions_count|

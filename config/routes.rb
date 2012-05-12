@@ -2,6 +2,7 @@ Actalyze::Application.routes.draw do
   root to: 'pages#index'
 
   get 'user' => 'pages#user'
+  get 'registered' => 'pages#registered'
 
   get 'dashboard' => 'pages#dashboard', as: :dashboard
   get 'chart' => 'pages#chart', as: :chart

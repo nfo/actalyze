@@ -5,6 +5,9 @@ class PagesController < ApplicationController
   def user
   end
 
+  def registered
+  end
+
   def dashboard
   end
 
