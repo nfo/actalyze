@@ -6,19 +6,14 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
-
 gem "haml", ">= 3.1.4"
 gem 'pusher'
 gem 'redis'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'twitter-bootstrap-rails'
   gem 'compass', "0.12.alpha.4"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -35,6 +30,10 @@ group :beacon do
   gem 'redis'
   gem 'hiredis'
   gem 'goliath'
+end
+
+group :test do
+  gem 'capybara'
 end
 
 gem 'jquery-rails'
