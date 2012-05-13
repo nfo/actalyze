@@ -28,6 +28,7 @@ begin
       while i <= max_category do
         categories << i
         total << 0
+        converted << 0
         i += 0.5
       end
 
@@ -35,10 +36,15 @@ begin
         category_index = categories.index(x)
         total[category_index] = y
       end
+
+      converted_total = 0
       message[1].each_slice(2) do |x, y|
         category_index = categories.index(x)
         converted[category_index] = y
+        converted_total += y
       end
+
+      converted.collect! { |value| 1.0 * value / converted_total * 100 }
 
       categories.each_with_index do |value, index|
         categories[index] = value.to_s + ' - ' + (value+0.5).to_s

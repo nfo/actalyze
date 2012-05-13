@@ -25,12 +25,27 @@ $(document).ready(function() {
       zoomType: 'xy'
     },
     title: {
-      text: 'Actalize'
+      text: 'Actalyze'
     },
     credits: {
       enabled: false
     },
-    yAxis: [{
+    yAxis: [{ // Primary yAxis
+      labels: {
+        style: {
+          color: '#89A54E'
+        },
+        formatter: function() {
+          return this.value +'%';
+        }
+      },
+      title: {
+        text: 'Conversion',
+        style: {
+          color: '#89A54E'
+        }
+      }
+    }, {
       title: {
         text: 'Users',
         style: {
@@ -41,10 +56,11 @@ $(document).ready(function() {
         style: {
           color: '#4572A7'
         }
-      }
+      },
+      opposite: true
     }],
     xAxis: {
-      categories: ["0 - 0.5","0.5 - 1.0","1.0 - 1.5","1.5 - 2.0","2.0 - 2.5","2.5 - 3.0"],
+      categories: ["0 - 0.5", "0.5 - 1.0", "1.0 - 1.5", "1.5 - 2.0", "2.0 - 2.5", "2.5 - 3.0"],
       tickmarkPlacement: 'between'
     },
     plotOptions: {
@@ -62,6 +78,7 @@ $(document).ready(function() {
       color: '#4572A7',
       type: 'column',
       data: []
+      yAxis: 1,
     }, {
       name: 'Conversion',
       color: '#89A54E',
