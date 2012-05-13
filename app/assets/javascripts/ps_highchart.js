@@ -63,7 +63,7 @@ for (var i = 2000; i >= 0; i--) {
   var randFloor = Math.floor(rand * 2) / 2;
   var index = categories.indexOf(randFloor);
   if (index != -1) {
-    dataTotal[index] += Math.ceil(skewed(rand, 0.15, 1, 10) * 10) / 10;
+    dataTotal[index] += Math.ceil(skewed(rand, 0.15, 1, 10) * 10) / 40;
   }
 };
 
