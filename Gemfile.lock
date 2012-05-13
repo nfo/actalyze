@@ -65,7 +65,7 @@ GEM
       rack (>= 1.2.2)
       rack-contrib
       rack-respond_to
-    haml (3.1.5)
+    haml (3.2.0.alpha.10)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
@@ -170,7 +170,7 @@ DEPENDENCIES
   capybara
   compass (= 0.12.alpha.4)
   goliath
-  haml (>= 3.1.4)
+  haml (~> 3.2.0.alpha.10)
   haml-rails (>= 0.3.4)
   hiredis
   jquery-rails

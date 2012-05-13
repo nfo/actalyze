@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title= "Actalyze"
+    :javascript
+      var TBRUM = TBRUM || {};
+      TBRUM.q = TBRUM.q || [];
+      TBRUM.q.push(['mark', 'firstbyte', (new Date).getTime()]);
+
+      function sleep(milliseconds) {
+        var start = new Date().getTime();
+        while ((new Date().getTime() - start) < milliseconds) {
+          // Do nothing
+        }
+      }
+      (function() {
+        var rand = Math.ceil(Math.random() * 3000);
+        sleep(rand);
+        var a = document.createElement('script');
+        a.type = 'text/javascript';
+        a.async = true;
+        a.src = document.location.protocol + '//162.38.111.162:3000/assets/episode-tbrum.js';
+        var b = document.getElementsByTagName('script')[0];
+        b.parentNode.insertBefore(a, b);
+      })();
+
+      
+      
+  %body
+    = yield
+

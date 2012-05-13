@@ -6,7 +6,7 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem "haml", ">= 3.1.4"
+gem 'haml', '~> 3.2.0.alpha.10'
 gem 'pusher'
 gem 'redis'
 

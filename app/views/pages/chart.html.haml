@@ -1,4 +1,15 @@
 .container
+  .row{style: 'text-align: center;'}
+    - @costs.each do |k, v|
+      .span3
+        .well
+          %h4= t('.'+k.to_s)
+          %h3= v.to_s + "$"
+    - @revenues.each do |k, v|
+      .span3
+        .well
+          %h4= t('.'+k.to_s)
+          %h3= v.to_s + "$"
   .row
     .span12
       #chart

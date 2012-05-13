@@ -1,17 +1,22 @@
 class PagesController < ApplicationController
   def index
+    render layout: 'user'
   end
 
   def user
+    render layout: 'user'
   end
 
   def registered
+    render layout: 'user'
   end
 
   def dashboard
   end
 
   def chart
+    @costs = {acquisition: 0.15, visitor_page: 0.001, user_page: 0.005}
+    @revenues = {user_day: 1}
   end
 
   def pusher

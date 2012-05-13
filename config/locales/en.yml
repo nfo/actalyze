@@ -2,17 +2,22 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
-  dashboard:
-    acquisition: "Acquisition"
-    bounce_rate: "Bounce rate"
-    visitor_engagement: "Visitor engagement"
-    conversion: "Conversion"
-    user_engagement: "User engagement"
-    retention: "Retention"
-    costs: "Costs"
-    revenues: "Revenues"
-    page_view: "Page view"
-    users: "Users"
-    life_time_value: "Life Time Value"
-    performance: "Performance"
+  pages:
+    dashboard:
+      acquisition: "Acquisition"
+      bounce_rate: "Bounce rate"
+      visitor_engagement: "Visitor engagement"
+      conversion: "Conversion"
+      user_engagement: "User engagement"
+      retention: "Retention"
+      costs: "Costs"
+      revenues: "Revenues"
+      page_view: "Page view"
+      users: "Users"
+      life_time_value: "Life Time Value"
+      performance: "Performance"
+    chart:
+      acquisition: "Acquisition cost / visitor"
+      visitor_page: "Page cost / visitor"
+      user_page: "Page cost / user"
+      user_day: "Revenue / user / day"

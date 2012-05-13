@@ -15,11 +15,37 @@ begin
     on.message do |channel, message|
       puts "Message: #{channel} #{message}"
       message = JSON.parse(message)
+      max_category = 0
+      categories = []
       total = []
       converted = []
-      message[0].each_slice(2) { |x, y| total << [x, y] }
-      message[1].each_slice(2) { |x, y| converted << [x, y] }
-      Pusher[channel].trigger('conversion_range_load_time_event', {:message => [total, converted]}.to_json)
+
+      message[0].each_slice(2) do |x, y|
+        max_category = x if x > max_category
+      end
+
+      i = 0
+      while i <= max_category do
+        categories << i
+        total << 0
+        i += 0.5
+      end
+
+      message[0].each_slice(2) do |x, y|
+        category_index = categories.index(x)
+        total[category_index] = y
+      end
+      message[1].each_slice(2) do |x, y|
+        category_index = categories.index(x)
+        converted[category_index] = y
+      end
+
+      categories.each_with_index do |value, index|
+        categories[index] = value.to_s + ' - ' + (value+0.5).to_s
+      end
+
+      
+      Pusher[channel].trigger('conversion_range_load_time_event', {:data => {categories: categories, total: total, converted: converted} }.to_json)
     end
 
     on.unsubscribe do |channel, subscriptions_count|
