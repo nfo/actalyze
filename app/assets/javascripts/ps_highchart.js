@@ -9,16 +9,22 @@ WEB_SOCKET_DEBUG = true;
 var pusher = new Pusher('c65375e6d64ae2e5ba40');
 var channel = pusher.subscribe('conversion_load_time_range_channel');
 channel.bind('conversion_range_load_time_event', function(response) {
-  var data = response["message"];
+  var data = response["message"], localDataTotal = [], localDataConverted = [];
 
   categoriesText = [];
-  for (var j = data.categories.length - 1; j >= 0; j--) {
-    categoriesText = data.categories[j] + ' - ' + (data.categories[j] + 0.5);
+  for (var j = 0; j < data.categories.length; j++) {
+    categoriesText.push(data.categories[j] + ' - ' + (data.categories[j] + 0.5));
+  };
+  for (var i = data.total.length - 1; i >= 0; i--) {
+    localDataTotal[i] = dataTotal[i] + data.total[i];
+  };
+  for (var i = data.converted.length - 1; i >= 0; i--) {
+    localDataConverted[i] = dataConverted[i] + data.converted[i];
   };
 
   chart.xAxis[0].setCategories(categoriesText, false);
-  chart.series[0].setData(data.total, false);
-  chart.series[1].setData(data.converted, false);
+  chart.series[0].setData(localDataTotal, false);
+  chart.series[1].setData(localDataConverted, false);
   chart.redraw(true);
 });
 
@@ -44,23 +50,24 @@ function skewed(x, mean, sigma, alpha) {
   var phi = (1 / 2) * (1 + sign * erf);
   return 2 * normal * phi
 }
-var i, sample = [],
-  exp = [],
+var dataTotal = [],
+  dataConverted = [],
   rand;
 var categories = [0, 0.5, 1, 1.5, 2, 2.5],
-  sample = [0, 0, 0, 0, 0, 0];
-for (i = 2000; i >= 0; i--) {
+  dataTotal = [0, 0, 0, 0, 0, 0];
+for (var i = 2000; i >= 0; i--) {
   rand = Math.random() * 5;
   var randFloor = Math.floor(rand * 2) / 2;
   var index = categories.indexOf(randFloor);
   if (index != -1) {
-    sample[index] += Math.ceil(skewed(rand, 0.15, 1, 10) * 10) / 10;
+    dataTotal[index] += Math.ceil(skewed(rand, 0.15, 1, 10) * 10) / 10;
   }
 };
 
-for (var j = 0; j < sample.length; j++) {
-  exp[j] = decrexp(categories[j], 1);
+for (var j = 0; j < dataTotal.length; j++) {
+  dataConverted[j] = decrexp(categories[j], 1);
 };
+
 var chart;
 $(document).ready(function() {
   chart = new Highcharts.Chart({
@@ -121,13 +128,13 @@ $(document).ready(function() {
       name: 'Users',
       color: '#5a7590',
       type: 'column',
-      data: [],
+      data: dataTotal,
       yAxis: 1
     }, {
       name: 'Conversion',
       color: '#da953b',
       type: 'spline',
-      data: []
+      data: dataConverted
     }]
   });
 });
