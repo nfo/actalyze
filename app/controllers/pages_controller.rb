@@ -3,6 +3,10 @@ class PagesController < ApplicationController
     render layout: 'user'
   end
 
+  def index2
+    render layout: 'user'
+  end
+
   def user
     render layout: 'user'
   end

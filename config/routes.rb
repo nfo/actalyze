@@ -1,6 +1,8 @@
 Actalyze::Application.routes.draw do
   root to: 'pages#index'
 
+  get 'index2' => 'pages#index2'
+
   get 'user' => 'pages#user'
   get 'registered' => 'pages#registered'
 
