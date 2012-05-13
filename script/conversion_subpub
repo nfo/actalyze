@@ -19,7 +19,7 @@ begin
       converted = []
       message[0].each_slice(2) { |x, y| total << [x, y] }
       message[1].each_slice(2) { |x, y| converted << [x, y] }
-      Pusher[channel].trigger('range_load_time_event', {:message => [total, converted]}.to_json)
+      Pusher[channel].trigger('conversion_range_load_time_event', {:message => [total, converted]}.to_json)
     end
 
     on.unsubscribe do |channel, subscriptions_count|
