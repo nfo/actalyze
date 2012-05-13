@@ -21,3 +21,6 @@ en:
       visitor_page: "Page cost / visitor"
       user_page: "Page cost / user"
       user_day: "Revenue / user / day"
+  layouts:
+    header:
+      chart: "Conversion"

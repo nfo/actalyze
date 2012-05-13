@@ -1,15 +1,21 @@
 .container
   .row{style: 'text-align: center;'}
-    - @costs.each do |k, v|
-      .span3
-        .well
-          %h4= t('.'+k.to_s)
-          %h3= v.to_s + "$"
-    - @revenues.each do |k, v|
-      .span3
-        .well
-          %h4= t('.'+k.to_s)
-          %h3= v.to_s + "$"
+    .span3
+      .well
+        %h4 Acquisition cost
+        %h3#acquisition-cost $ -
+    .span3
+      .well
+        %h4 Engagement cost
+        %h3#engagement-cost $ -
+    .span3
+      .well
+        %h4 Revenue
+        %h3#revenue $ -
+    .span3
+      .well
+        %h4 Margin
+        %h3#margin $ -
   .row
     .span12
       #chart
