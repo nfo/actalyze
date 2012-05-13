@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+puts "Script loading..."
+
+Pusher.app_id = '20370'
+Pusher.key = 'c65375e6d64ae2e5ba40'
+Pusher.secret = '0df645eb0ab088349896'
+
+begin
+  REDIS.subscribe('engagement_load_time_range_channel') do |on|
+    on.subscribe do |channel, subscriptions_count|
+      puts "Subscribed to ##{channel} (#{subscriptions_count} subscriptions)"
+    end
+
+    on.message do |channel, message|
+      puts "Message: #{channel} #{message}"
+      message = JSON.parse(message)
+
+      load_time_range_users = []
+      load_time_range_users_hash = {}
+      message[0].each_slice(2) { |range, users| load_time_range_users << [range, users] }
+      message[0].each_slice(2) { |range, users| load_time_range_users_hash[range] = users }
+
+      load_time_range_views_average = []
+      message[1].each_slice(2) do |range, views|
+        users = load_time_range_users_hash[range]
+        load_time_range_views_average << [range, 1.0 * views / users]
+      end
+
+puts({:message => [load_time_range_users, load_time_range_views_average]}.to_json)
+      Pusher[channel].trigger('engagement_range_load_time_event', {:message => [load_time_range_users, load_time_range_views_average]}.to_json)
+    end
+
+    on.unsubscribe do |channel, subscriptions_count|
+     puts "Unsubscribed for ##{channel} (#{total} subscriptions)"
+    end
+  end
+rescue Interrupt
+  puts 'bye'
+end
