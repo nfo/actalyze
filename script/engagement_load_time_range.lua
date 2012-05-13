@@ -33,9 +33,14 @@ else
   local previous_range = math.floor(previous_average * 2) / 2 -- Split by 0.5
   local new_range = math.floor(new_average * 2) / 2 -- Split by 0.5
   if (previous_range ~= new_range) then
-    redis.call('hincrby', load_time_range_users_hash, previous_range, -1)
+    if redis.call('hincrby', load_time_range_users_hash, previous_range, -1) <= 0 then
+      redis.call('hdel', load_time_range_users_hash, previous_range)
+    end
     redis.call('hincrby', load_time_range_users_hash, new_range, 1)
-    redis.call('hincrby', load_time_range_views_hash, previous_range, -(views - 1))
+
+    if redis.call('hincrby', load_time_range_views_hash, previous_range, -(views - 1)) <= 0 then
+      redis.call('hdel', load_time_range_views_hash, previous_range)
+    end
     redis.call('hincrby', load_time_range_views_hash, new_range, views)
   else
     redis.call('hincrby', load_time_range_views_hash, previous_range, 1)
