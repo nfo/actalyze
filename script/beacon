@@ -21,6 +21,8 @@ REDIS_POOL = ::Redis.new(namespace: 'actalyze')
 
 REDIS_SCRIPT = File.read(File.join(File.expand_path(File.dirname(__FILE__)), 'load_time_range.lua'))
 REDIS_SCRIPT_SHA1 = Digest::SHA1.hexdigest(REDIS_SCRIPT)
+REDIS_SCRIPT_CONVERSION = File.read(File.join(File.expand_path(File.dirname(__FILE__)), 'conversion_load_time_range.lua'))
+REDIS_SCRIPT_CONVERSION_SHA1 = Digest::SHA1.hexdigest(REDIS_SCRIPT_CONVERSION)
 
 class Beacon < Goliath::API
   use Goliath::Rack::Params
@@ -32,7 +34,7 @@ class Beacon < Goliath::API
     converted = params[:pathname] == '/registered' ? 1 : 0
 
     # REDIS_POOL.script :flush
-    res = REDIS_POOL.eval REDIS_SCRIPT, 1, uuid, total_load_time, converted
+    res = REDIS_POOL.eval REDIS_SCRIPT_CONVERSION, 1, uuid, total_load_time, converted
     puts res.inspect
 
     # [200, {}, res.inspect + "\n"]

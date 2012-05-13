@@ -77,7 +77,7 @@ if (publish) then
   -- Get the full hash of ranged load times by page views (as an array)
   local load_time_range_views = redis.call('hgetall', load_time_range_views_hash)
 
-  -- Transform the arrays to a JSON string, an array of two arrays (Lua can't do it by itself, lulz)
+  -- Transform the arrays to a JSON string, an array of arrays (Lua can't do it by itself, lulz)
   local message = '[['
   for i,v in ipairs(load_time_range_total) do message = message .. v .. ',' end
   message = string.sub(message, 0, -2) .. '],['
@@ -98,6 +98,6 @@ if (publish) then
   end
   message = message .. ']'
 
-  -- return redis.call('publish', 'conversion_load_time_range_channel', message)
-  return message
+  return redis.call('publish', 'conversion_load_time_range_channel', message)
+  -- return message
 end
