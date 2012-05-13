@@ -10,6 +10,8 @@ gem "haml", ">= 3.1.4"
 gem 'pusher'
 gem 'redis'
 
+gem 'unicorn'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
