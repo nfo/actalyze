@@ -1,13 +1,9 @@
 #header
   .container.first-level.logged-out
     .row
-      .span5
+      .span2
         = image_tag("actalyze_small.png", class: 'top10')
-  .navbar.second-level
-    .navbar-inner
-      .container
-        %ul.nav
-          %li.home
-            %a.reset{href: dashboard_path}= t('.dashboard')
-          %li.active
-            %a.reset{href: chart_path}= t('.chart')
+      .span5.top10
+        %a.reset.logo{href: root_path}
+          %span= 'Actalyze'
+
