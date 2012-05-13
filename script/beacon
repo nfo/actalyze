@@ -19,8 +19,6 @@ REDIS_POOL_SIZE = 10
 # end
 REDIS_POOL = ::Redis.new(namespace: 'actalyze')
 
-REDIS_SCRIPT = File.read(File.join(File.expand_path(File.dirname(__FILE__)), 'load_time_range.lua'))
-REDIS_SCRIPT_SHA1 = Digest::SHA1.hexdigest(REDIS_SCRIPT)
 REDIS_SCRIPT_CONVERSION = File.read(File.join(File.expand_path(File.dirname(__FILE__)), 'conversion_load_time_range.lua'))
 REDIS_SCRIPT_CONVERSION_SHA1 = Digest::SHA1.hexdigest(REDIS_SCRIPT_CONVERSION)
 

@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+puts "Script loading..."
+
+Pusher.app_id = '20370'
+Pusher.key = 'c65375e6d64ae2e5ba40'
+Pusher.secret = '0df645eb0ab088349896'
+
+begin
+  REDIS.subscribe('conversion_load_time_range_channel') do |on|
+    on.subscribe do |channel, subscriptions_count|
+      puts "Subscribed to ##{channel} (#{subscriptions_count} subscriptions)"
+    end
+
+    on.message do |channel, message|
+      puts "Message: #{channel} #{message}"
+      message = JSON.parse(message)
+      total = []
+      converted = []
+      message[0].each_slice(2) { |x, y| total << [x, y] }
+      message[1].each_slice(2) { |x, y| converted << [x, y] }
+      Pusher[channel].trigger('range_load_time_event', {:message => [total, converted]}.to_json)
+    end
+
+    on.unsubscribe do |channel, subscriptions_count|
+     puts "Unsubscribed for ##{channel} (#{total} subscriptions)"
+    end
+  end
+rescue Interrupt
+  puts 'bye'
+end
