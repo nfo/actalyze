@@ -24,6 +24,8 @@ begin
         max_category = x if x > max_category
       end
 
+      max_category = 2.5 if max_category < 2.5
+
       i = 0
       while i <= max_category do
         categories << i

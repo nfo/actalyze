@@ -15,11 +15,14 @@ channel.bind('conversion_range_load_time_event', function(response) {
   for (var j = 0; j < data.categories.length; j++) {
     categoriesText.push(data.categories[j] + ' - ' + (data.categories[j] + 0.5));
   };
-  for (var i = data.total.length - 1; i >= 0; i--) {
-    localDataTotal[i] = dataTotal[i] + data.total[i];
+
+  for (var i = 0; i < dataTotal.length; i++) {
+    var total = data.total[i] || 0;
+    localDataTotal[i] = dataTotal[i] + total;
   };
-  for (var i = data.converted.length - 1; i >= 0; i--) {
-    localDataConverted[i] = dataConverted[i] + data.converted[i];
+
+  for (var k = 0; k < localDataTotal.length; k++) {
+    localDataConverted[k] = decrexp(data.categories[k], 1);
   };
 
   chart.xAxis[0].setCategories(categoriesText, false);
