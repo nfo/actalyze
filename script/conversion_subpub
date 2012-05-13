@@ -44,14 +44,15 @@ begin
         converted_total += y
       end
 
-      converted.collect! { |value| 1.0 * value / converted_total * 100 }
-
-      categories.each_with_index do |value, index|
-        categories[index] = value.to_s + ' - ' + (value+0.5).to_s
+      converted.collect! do |value|
+        if value == 0
+          0
+        else
+          1.0 * value / converted_total * 100
+        end
       end
-
       
-      Pusher[channel].trigger('conversion_range_load_time_event', {:data => {categories: categories, total: total, converted: converted} }.to_json)
+      Pusher[channel].trigger('conversion_range_load_time_event', {:message => {categories: categories, total: total, converted: converted} }.to_json)
     end
 
     on.unsubscribe do |channel, subscriptions_count|

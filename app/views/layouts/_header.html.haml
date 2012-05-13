@@ -2,15 +2,12 @@
   .container.first-level.logged-out
     .row
       .span5
-        %a.reset.logo{href: root_path}
-          %span>= 'Clever'
-          %span.gray= 'Scale'
-          %span.portal= 'Portal'
+        = image_tag("actalyze_small.png", class: 'top10')
   .navbar.second-level
     .navbar-inner
       .container
         %ul.nav
           %li.home
             %a.reset{href: dashboard_path}= t('.dashboard')
-          %li
+          %li.active
             %a.reset{href: chart_path}= t('.chart')
