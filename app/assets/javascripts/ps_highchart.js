@@ -77,8 +77,8 @@ $(document).ready(function() {
       name: 'Users',
       color: '#4572A7',
       type: 'column',
-      data: []
-      yAxis: 1,
+      data: [],
+      yAxis: 1
     }, {
       name: 'Conversion',
       color: '#89A54E',
