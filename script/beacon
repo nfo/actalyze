@@ -34,12 +34,26 @@ class Beacon < Goliath::API
     converted = params[:pathname] == '/registered' ? 1 : 0
 
     # REDIS_POOL.script :flush
-    res = REDIS_POOL.eval REDIS_SCRIPT_CONVERSION, 1, uuid, total_load_time, converted
+    res = run_script REDIS_SCRIPT_CONVERSION, REDIS_SCRIPT_CONVERSION_SHA1, 1, uuid, total_load_time, converted
     puts res.inspect
-    res = REDIS_POOL.eval REDIS_SCRIPT_ENGAGEMENT, 1, uuid, total_load_time
+
+    res = run_script REDIS_SCRIPT_ENGAGEMENT, REDIS_SCRIPT_ENGAGEMENT_SHA1, 1, uuid, total_load_time
     puts res.inspect
 
     # [200, {}, res.inspect + "\n"]
     RESPONSE_204
+  end
+
+  protected
+
+  # Redis keeps a compiled version of already-ran scripts.
+  def run_script(script, script_sha1, *params)
+    begin
+      REDIS_POOL.evalsha script_sha1, *params
+    rescue RuntimeError
+      if $!.message =~ /NOSCRIPT/
+        REDIS_POOL.eval script, *params
+      end
+    end
   end
 end

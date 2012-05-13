@@ -27,7 +27,6 @@ begin
         load_time_range_views_average << [range, 1.0 * views / users]
       end
 
-puts({:message => [load_time_range_users, load_time_range_views_average]}.to_json)
       Pusher[channel].trigger('engagement_range_load_time_event', {:message => [load_time_range_users, load_time_range_views_average]}.to_json)
     end
 
